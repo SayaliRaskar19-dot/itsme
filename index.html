@@ -88,4 +88,8 @@ window.login = function () {
 mkdir website
 cd website
 echo "<h1>Hello Sayali</h1>" > index.html
-python3 -m http.server 8080
+python3 -m http.server 8080 
+sudo apt update
+sudo apt install apache2 -y
+sudo systemctl start apache2
+sudo systemctl enable apache2

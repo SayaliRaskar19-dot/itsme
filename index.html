@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Firebase Login</title>
+</head>
+<body>
+
+<h2>Firebase Authentication</h2>
+
+<input type="email" id="email" placeholder="Enter Email"><br><br>
+
+<input type="password" id="password" placeholder="Enter Password"><br><br>
+
+<button onclick="signup()">Sign Up</button>
+
+<button onclick="login()">Login</button>
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword
+} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+
+const firebaseConfig = {
+
+  apiKey: "AIzaSyBbsOcRNozkHAx3K-OUuLeCY5nVD8SLsxQ",
+  authDomain:"myccproj.firebaseapp.com",
+  projectId: "myccproj",
+
+};
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+window.signup = function () {
+
+  const email = document.getElementById("email").value;
+
+  const password = document.getElementById("password").value;
+
+  createUserWithEmailAndPassword(auth, email, password)
+
+    .then(() => {
+
+      alert("Signup Successful 😄");
+
+    })
+
+    .catch((error) => {
+
+      alert(error.message);
+
+    });
+
+};
+
+window.login = function () {
+
+  const email = document.getElementById("email").value;
+
+  const password = document.getElementById("password").value;
+
+  signInWithEmailAndPassword(auth, email, password)
+
+    .then(() => {
+
+      alert("Login Successful 🔥");
+
+    })
+
+    .catch((error) => {
+
+      alert(error.message);
+
+    });
+
+};
+
+</script>
+
+</body>
+</html>
